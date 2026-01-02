@@ -1,0 +1,1 @@
+export 'package:habit_tracker/model/local/onboarding_model.dart';
