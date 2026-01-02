@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Image.asset("name"),
-            Placeholder(color: AppColors.kRoyalBlue),
+            SizedBox(height: 120, child: Placeholder(color: AppColors.kRoyalBlue)),
             SizedBox(height:15),
             AppText(text: AppStrings.trackra, fontSize: 24, fontWeight: FontWeight.w700),
             SizedBox(height:10),
