@@ -11,18 +11,30 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  late final PageController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = PageController(initialPage: 0);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   List<OnboardingInfo> onboardingMessages = [
     OnboardingInfo(
       image: "",
       title: AppStrings.trackWhatYoureLearning,
-      message:
-          AppStrings.stayConsistentWithLearningGoals,
+      message: AppStrings.stayConsistentWithLearningGoals,
     ),
     OnboardingInfo(
       image: "",
       title: AppStrings.buildDailyHabits,
-      message:
-         AppStrings.smallActionsCompound,
+      message: AppStrings.smallActionsCompound,
     ),
     OnboardingInfo(
       image: "",
@@ -33,15 +45,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int currentPage = 0;
   void changePage(int page) {
     currentPage = page;
-    setState(() {
-      
-    });
+    setState(() {});
   }
-  void skipToLastOnboarding() {
-    currentPage = 2;
+
+  void nextPage() {
+    currentPage++;
     setState(() {
       
     });
+    _controller.animateToPage(
+      currentPage,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.bounceIn,
+    );
+  }
+
+  void skipToLastOnboarding() {
+    _controller.animateToPage(2, duration: Duration(milliseconds: 300), curve: Curves.bounceIn);
+    currentPage = 2;
+    setState(() {});
   }
 
   @override
@@ -56,7 +78,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Align(
                 alignment: AlignmentGeometry.topRight,
                 child: Visibility(
-                  visible: currentPage!=2,
+                  visible: currentPage != 2,
                   child: AppText(
                     onTap: skipToLastOnboarding,
                     text: AppStrings.skip,
@@ -70,10 +92,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Expanded(
                 child: PageView.builder(
                   itemCount: onboardingMessages.length,
+                  controller: _controller,
                   physics: BouncingScrollPhysics(),
                   onPageChanged: (value) => changePage(value),
                   itemBuilder: (context, page) {
-                    OnboardingInfo onboardingInfo = onboardingMessages[currentPage];
+                    OnboardingInfo onboardingInfo = onboardingMessages[page];
                     return Column(
                       children: [
                         SizedBox(height: 250, child: Placeholder(color: AppColors.kRoyalBlue)),
@@ -107,34 +130,46 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         margin: EdgeInsets.only(right: 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(6),
-                          color:currentPage == index?AppColors.kRoyalBlue: AppColors.kGraphiteBlue,
+                          color: currentPage == index
+                              ? AppColors.kRoyalBlue
+                              : AppColors.kGraphiteBlue,
                         ),
                       );
                     }),
                   ),
                   SizedBox(height: 20),
-                  AppContainer(text:currentPage == 2? AppStrings.getStarted :AppStrings.next, showIcon:currentPage == 2?false :true),
-                 currentPage == 2? Column(
-                    children: [
-                      SizedBox(height: 10,),
-                      RichText(text:TextSpan(
-                        text: AppStrings.alreadyHaveAnAccount,
-                        style:TextStyle(fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.kSlateBlue,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: AppStrings.logIn,
-                            style:TextStyle(fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.kSlateBlue,
-                        ),
-                          )
-                        ]
-                      ),)
-                    ],
-                  ): const SizedBox.shrink()
+                  AppContainer(
+                    onTap: currentPage < 2 ? nextPage : () {},
+                    text: currentPage == 2 ? AppStrings.getStarted : AppStrings.next,
+                    showIcon: currentPage == 2 ? false : true,
+                  ),
+                  currentPage == 2
+                      ? Column(
+                          children: [
+                            SizedBox(height: 10),
+                            RichText(
+                              text: TextSpan(
+                                text: AppStrings.alreadyHaveAnAccount,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.kSlateBlue,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: AppStrings.logIn,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.kSlateBlue,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      : const SizedBox.shrink(),
                 ],
               ),
             ],
