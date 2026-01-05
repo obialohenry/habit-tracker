@@ -14,18 +14,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   List<OnboardingInfo> onboardingMessages = [
     OnboardingInfo(
       image: "",
-      title: "Track what\nyou're learning",
+      title: AppStrings.trackWhatYoureLearning,
       message:
-          "Stay consistent with your learning goals\n"
-          "and visualize your progress over time.",
+          AppStrings.stayConsistentWithLearningGoals,
     ),
     OnboardingInfo(
       image: "",
-      title: "Build daily habits",
+      title: AppStrings.buildDailyHabits,
       message:
-          "Small actions compund. Track\nyour consistency and grow your streak.",
+         AppStrings.smallActionsCompound,
     ),
-    OnboardingInfo(image: "", title: "Reflect&improve", message: "Turn experience into growth."),
+    OnboardingInfo(
+      image: "",
+      title: AppStrings.reflectAndImprove,
+      message: AppStrings.turnExperienceIntoGrowth,
+    ),
   ];
   int currentPage = 0;
   void changePage(int page) {

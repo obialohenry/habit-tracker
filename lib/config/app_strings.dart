@@ -7,4 +7,13 @@ class AppStrings {
   static const getStarted = "Get Started";
   static const alreadyHaveAnAccount = "Already have an account?";
   static const logIn = "Log in";
+  static const trackWhatYoureLearning = "Track what\nyou're learning";
+  static const stayConsistentWithLearningGoals =
+      "Stay consistent with your learning goals\n"
+      "and visualize your progress over time.";
+  static const buildDailyHabits = "Build daily habits";
+  static const smallActionsCompound =
+      "Small actions compund. Track\nyour consistency and grow your streak.";
+  static const reflectAndImprove = "Reflect&improve";
+  static const turnExperienceIntoGrowth = "Turn experience into growth.";
 }
