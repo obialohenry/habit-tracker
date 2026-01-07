@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:habit_tracker/src/components.dart';
 import 'package:habit_tracker/src/config.dart';
 import 'package:habit_tracker/src/models.dart';
+import 'package:habit_tracker/src/screens.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -103,13 +104,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         SizedBox(height: 25),
                         AppText(
                           text: onboardingInfo.title,
-                          fontSize: 24,
+                          fontSize: 30,
                           fontWeight: FontWeight.w700,
+                          textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 10),
                         AppText(
                           text: onboardingInfo.message,
-                          fontSize: 12,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: AppColors.kSlateBlue,
                           textAlign: TextAlign.center,
@@ -139,7 +141,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   SizedBox(height: 20),
                   AppContainer(
-                    onTap: currentPage < 2 ? nextPage : () {},
+                    onTap: currentPage < 2
+                        ? nextPage
+                        : () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ProfileSetUpScreen()),
+                            );
+                          },
                     text: currentPage == 2 ? AppStrings.getStarted : AppStrings.next,
                     showIcon: currentPage == 2 ? false : true,
                   ),

@@ -16,4 +16,14 @@ class AppStrings {
       "Small actions compund. Track\nyour consistency and grow your streak.";
   static const reflectAndImprove = "Reflect&improve";
   static const turnExperienceIntoGrowth = "Turn experience into growth.";
+  static const welcome = "Welcome.";
+  static const letsCustomizeYourWorkspace = "Let's customize your workspace to track your journey.";
+  static const chooseAnAvatar = "Choose an avatar";
+  static const displayName = "Display Name";
+  static const currentFocus = "Current Focus";
+  static const optional = "Optional";
+  static const continueText = "Continue";
+  //Hint
+  static const hintDisplayName = "e.g. Linus Torvalds";
+  static const hintCurrentFocus = "What are you currently learning? e.g Rust, System Design...";
 }

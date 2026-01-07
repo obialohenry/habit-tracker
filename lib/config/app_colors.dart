@@ -7,6 +7,12 @@ class AppColors {
   static const kMistBlue = Color(0xffA4B5CC);
   static const kGraphiteBlue = Color(0xff313F53);
   static const kDarkModeBlue = Color(0xff111825);
+  static const kCharcoalBlue = Color(0xff3F4858);
+  static const kDarkSteel = Color(0xff232A34);
+  static const kSoftSlateBlue = Color(0xff909FB3);
+  static const kGraphiteNight = Color(0xff1F2228);
+  static const kSteelBlue = Color(0xff1F2A3C);
+  static const kSlateGray = Color(0xff5C697D);
   static const kMidnightDepths = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
