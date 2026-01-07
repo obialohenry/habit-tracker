@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/src/components.dart';
 import 'package:habit_tracker/src/config.dart';
+import 'package:habit_tracker/src/screens.dart';
 
 class ProfileSetUpScreen extends StatefulWidget {
   const ProfileSetUpScreen({super.key});
@@ -101,7 +102,16 @@ class _ProfileSetUpScreenState extends State<ProfileSetUpScreen> {
               ),
               // Spacer(flex: 1),
               const SizedBox(height: 60),
-              AppContainer(onTap: () {}, text: AppStrings.continueText, showIcon: true),
+              AppContainer(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DashboardScreen()),
+                  );
+                },
+                text: AppStrings.continueText,
+                showIcon: true,
+              ),
             ],
           ),
         ),
