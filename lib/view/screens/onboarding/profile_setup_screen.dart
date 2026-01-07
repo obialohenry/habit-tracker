@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/src/components.dart';
 import 'package:habit_tracker/src/config.dart';
 import 'package:habit_tracker/src/screens.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfileSetUpScreen extends StatefulWidget {
   const ProfileSetUpScreen({super.key});
@@ -11,6 +14,13 @@ class ProfileSetUpScreen extends StatefulWidget {
 }
 
 class _ProfileSetUpScreenState extends State<ProfileSetUpScreen> {
+  XFile? image;
+  Future<void> pickImage() async {
+    final ImagePicker picker = ImagePicker();
+    image = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,13 +49,18 @@ class _ProfileSetUpScreenState extends State<ProfileSetUpScreen> {
                 child: Stack(
                   alignment: AlignmentDirectional.bottomEnd,
                   children: [
-                    ProfileView(size: 100, borderWidth: 4.0),
-                    Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.kRoyalBlue,
+                    ProfileView(size: 100, borderWidth: 4.0, image: image?.path),
+                    GestureDetector(
+                      onTap: () {
+                        pickImage();
+                      },
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.kRoyalBlue,
+                        ),
                       ),
                     ),
                   ],
@@ -127,10 +142,12 @@ class ProfileView extends StatelessWidget {
     required this.size,
     required this.borderWidth,
     this.isSelected = false,
+    this.image,
   });
   final double size;
   final double borderWidth;
   final bool isSelected;
+  final String? image;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -140,6 +157,9 @@ class ProfileView extends StatelessWidget {
         shape: BoxShape.circle,
         color: AppColors.kGraphiteNight,
         border: isSelected ? Border.all(width: borderWidth, color: AppColors.kRoyalBlue) : null,
+        image: image == null
+            ? null
+            : DecorationImage(image: FileImage(File(image!)), fit: BoxFit.cover),
       ),
     );
   }
