@@ -40,14 +40,14 @@ class AppTextField extends StatelessWidget {
               ),
         TextFormField(
           showCursor: true,
-          cursorColor: AppColors.kSoftSlateBlue,
+          cursorColor: AppColors.kPrimary,
           maxLines: maxLines??1,
           minLines: minLines??1,
           style: TextStyle(
             fontFamily: AppStrings.inter,
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: AppColors.kSoftSlateBlue,
+            color: AppColors.kContentPrimary,
           ),
           decoration: InputDecoration(
             hintText: hintText,
@@ -55,21 +55,21 @@ class AppTextField extends StatelessWidget {
               fontFamily: AppStrings.inter,
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: AppColors.kSoftSlateBlue,
+              color: AppColors.kInfoPrimary,
             ),
             contentPadding: const EdgeInsets.symmetric(
             vertical: 12,
             horizontal: 12,
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: AppColors.kDarkSteel),
+              borderSide: BorderSide(color: AppColors.kInputBorder),
               borderRadius: BorderRadius.circular(borderRadius ?? 7),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: AppColors.kRoyalBlue),
+              borderSide: BorderSide(color: AppColors.kPrimary),
               borderRadius: BorderRadius.circular(borderRadius ?? 7),
             ),
-            fillColor: AppColors.kGraphiteNight,
+            fillColor: AppColors.kInputBackground,
             filled: true,
           ),
         ),

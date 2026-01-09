@@ -24,7 +24,7 @@ class AppContainer extends StatelessWidget {
       child: Container(
         height: height ?? 50,
         decoration: BoxDecoration(
-          color: AppColors.kRoyalBlue,
+          color: AppColors.kPrimary,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
@@ -35,7 +35,7 @@ class AppContainer extends StatelessWidget {
                 ? Row(
                     children: [
                       SizedBox(width: 8),
-                      icon ?? Icon(Icons.arrow_forward, size: 16, color: AppColors.kWhite),
+                      icon ?? Icon(Icons.arrow_forward, size: 16, color: AppColors.kContentPrimary),
                     ],
                   )
                 : SizedBox.shrink(),

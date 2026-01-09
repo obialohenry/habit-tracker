@@ -33,7 +33,7 @@ class AppText extends StatelessWidget {
               fontFamily: AppStrings.inter,
               fontSize: fontSize ?? 18,
               fontWeight: fontWeight ?? FontWeight.w400,
-              color: color ?? AppColors.kWhite,
+              color: color ?? AppColors.kContentPrimary,
             ),
       ),
     );

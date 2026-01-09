@@ -70,7 +70,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kDarkModeBlue,
+      backgroundColor: AppColors.kBackground,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
@@ -85,7 +85,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     text: AppStrings.skip,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    color: AppColors.kMistBlue,
+                    color: AppColors.kActionTertiary,
                   ),
                 ),
               ),
@@ -100,7 +100,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     OnboardingInfo onboardingInfo = onboardingMessages[page];
                     return Column(
                       children: [
-                        SizedBox(height: 250, child: Placeholder(color: AppColors.kRoyalBlue)),
+                        SizedBox(height: 250, child: Placeholder(color: AppColors.kPrimary)),
                         SizedBox(height: 25),
                         AppText(
                           text: onboardingInfo.title,
@@ -113,7 +113,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           text: onboardingInfo.message,
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: AppColors.kSlateBlue,
+                          color: AppColors.kContentSecondary,
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -133,8 +133,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(6),
                           color: currentPage == index
-                              ? AppColors.kRoyalBlue
-                              : AppColors.kGraphiteBlue,
+                              ? AppColors.kPageIndicatorActive
+                              : AppColors.kPageIndicatorInactive,
                         ),
                       );
                     }),
@@ -162,7 +162,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
-                                  color: AppColors.kSlateBlue,
+                                  color: AppColors.kContentSecondary,
                                 ),
                                 children: [
                                   TextSpan(
@@ -170,7 +170,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w400,
-                                      color: AppColors.kSlateBlue,
+                                      color: AppColors.kContentSecondary,
                                     ),
                                   ),
                                 ],

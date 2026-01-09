@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const kWhite = Colors.white;
-  static const kRoyalBlue = Color(0xff135BEC);
-  static const kSlateBlue = Color(0xff7584A3);
-  static const kMistBlue = Color(0xffA4B5CC);
-  static const kGraphiteBlue = Color(0xff313F53);
-  static const kDarkModeBlue = Color(0xff111825);
-  static const kCharcoalBlue = Color(0xff3F4858);
-  static const kDarkSteel = Color(0xff232A34);
-  static const kSoftSlateBlue = Color(0xff909FB3);
-  static const kGraphiteNight = Color(0xff1F2228);
-  static const kSteelBlue = Color(0xff1F2A3C);
-  static const kSlateGray = Color(0xff5C697D);
+  static const kBackground = Color(0xff111825);
+  static const kPrimary = Color(0xff135BEC);
+  static const kContentPrimary = Colors.white;
+  static const kContentSecondary = Color(0xff7584A3);
+  static const kActionTertiary = Color(0xffA4B5CC);
+  static const kPageIndicatorInactive = Color(0xff313F53);
+  static const kContentDisabled = Color(0xff3F4858);
+  static const kInfoPrimary = Color(0xff909FB3);
+  static const kInputBorder = Color(0xff232A34);
+  static const kInputBackground = Color(0xff1F2228);
+  static const kTagBackground = Color(0xff1F2A3C);
+  static const kTagContent = Color(0xff5C697D);
+  static const kPageIndicatorActive = kPrimary;
+}
+
+class Palette {
   static const kMidnightDepths = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,

@@ -24,14 +24,14 @@ class _ProfileSetUpScreenState extends State<ProfileSetUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kDarkModeBlue,
+      backgroundColor: AppColors.kBackground,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(Icons.arrow_back, color: AppColors.kWhite),
+              Icon(Icons.arrow_back, color: AppColors.kContentPrimary),
               SizedBox(height: 20),
               AppText(text: AppStrings.welcome, fontSize: 24, fontWeight: FontWeight.w600),
               SizedBox(height: 5),
@@ -39,7 +39,7 @@ class _ProfileSetUpScreenState extends State<ProfileSetUpScreen> {
                 text: AppStrings.letsCustomizeYourWorkspace,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
-                color: AppColors.kSlateBlue,
+                color: AppColors.kContentSecondary,
               ),
               SizedBox(height: 15),
               AppText(text: AppStrings.chooseAnAvatar, fontSize: 14, fontWeight: FontWeight.w700),
@@ -59,7 +59,7 @@ class _ProfileSetUpScreenState extends State<ProfileSetUpScreen> {
                         width: 30,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: AppColors.kRoyalBlue,
+                          color: AppColors.kPrimary,
                         ),
                       ),
                     ),
@@ -85,7 +85,7 @@ class _ProfileSetUpScreenState extends State<ProfileSetUpScreen> {
                             text: "Terminal",
                             fontSize: 10,
                             fontWeight: FontWeight.w600,
-                            color: AppColors.kCharcoalBlue,
+                            color: AppColors.kContentDisabled,
                           ),
                         ],
                       ),
@@ -104,13 +104,13 @@ class _ProfileSetUpScreenState extends State<ProfileSetUpScreen> {
                   padding: EdgeInsets.symmetric(vertical: 2, horizontal: 5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(3),
-                    color: AppColors.kSteelBlue,
+                    color: AppColors.kTagBackground,
                   ),
                   child: AppText(
                     text: AppStrings.optional,
                     fontSize: 10,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.kSlateGray,
+                    color: AppColors.kTagContent,
                   ),
                 ),
                 hintText: AppStrings.hintCurrentFocus,
@@ -155,8 +155,8 @@ class ProfileView extends StatelessWidget {
       width: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: AppColors.kGraphiteNight,
-        border: isSelected ? Border.all(width: borderWidth, color: AppColors.kRoyalBlue) : null,
+        color: AppColors.kTagContent,
+        border: isSelected ? Border.all(width: borderWidth, color: AppColors.kPrimary) : null,
         image: image == null
             ? null
             : DecorationImage(image: FileImage(File(image!)), fit: BoxFit.cover),
