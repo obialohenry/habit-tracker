@@ -12,6 +12,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = ThemeData();
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
@@ -20,15 +21,15 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Image.asset("name"),
-            SizedBox(height: 120, child: Placeholder(color: AppColors.kPrimary)),
-            SizedBox(height:15),
+            SizedBox(height: 120, child: Placeholder(color: theme.colorScheme.primary)),
+            SizedBox(height: 15),
             AppText(text: AppStrings.trackra, fontSize: 24, fontWeight: FontWeight.w700),
-            SizedBox(height:10),
+            SizedBox(height: 10),
             AppText(
               text: AppStrings.buildConsistencyDayAtATime,
               fontSize: 12,
               fontWeight: FontWeight.w400,
-              color: AppColors.kContentSecondary,
+              color: theme.textTheme.bodyMedium?.color,
             ),
           ],
         ),

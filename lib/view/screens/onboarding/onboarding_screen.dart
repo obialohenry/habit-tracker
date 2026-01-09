@@ -51,9 +51,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   void nextPage() {
     currentPage++;
-    setState(() {
-      
-    });
+    setState(() {});
     _controller.animateToPage(
       currentPage,
       duration: Duration(milliseconds: 300),
@@ -69,8 +67,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: AppColors.kBackground,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
@@ -85,7 +84,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     text: AppStrings.skip,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    color: AppColors.kActionTertiary,
+                    color: theme.colorScheme.tertiary,
                   ),
                 ),
               ),
@@ -100,7 +99,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     OnboardingInfo onboardingInfo = onboardingMessages[page];
                     return Column(
                       children: [
-                        SizedBox(height: 250, child: Placeholder(color: AppColors.kPrimary)),
+                        SizedBox(height: 250, child: Placeholder(color: theme.colorScheme.primary)),
                         SizedBox(height: 25),
                         AppText(
                           text: onboardingInfo.title,
@@ -113,7 +112,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           text: onboardingInfo.message,
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: AppColors.kContentSecondary,
+                          color: theme.textTheme.bodyMedium?.color,
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -162,7 +161,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
-                                  color: AppColors.kContentSecondary,
+                                  color: theme.textTheme.bodyMedium?.color,
                                 ),
                                 children: [
                                   TextSpan(
@@ -170,7 +169,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w400,
-                                      color: AppColors.kContentSecondary,
+                                      color: theme.textTheme.bodyMedium?.color,
                                     ),
                                   ),
                                 ],

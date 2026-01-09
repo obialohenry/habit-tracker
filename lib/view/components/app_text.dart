@@ -22,6 +22,7 @@ class AppText extends StatelessWidget {
   final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return GestureDetector(
       onTap: onTap,
       child: Text(
@@ -33,7 +34,7 @@ class AppText extends StatelessWidget {
               fontFamily: AppStrings.inter,
               fontSize: fontSize ?? 18,
               fontWeight: fontWeight ?? FontWeight.w400,
-              color: color ?? AppColors.kContentPrimary,
+              color: color ?? theme.textTheme.bodyLarge?.color,
             ),
       ),
     );

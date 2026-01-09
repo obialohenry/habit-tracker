@@ -21,6 +21,7 @@ class AppTextField extends StatelessWidget {
   final int? minLines;
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -40,14 +41,14 @@ class AppTextField extends StatelessWidget {
               ),
         TextFormField(
           showCursor: true,
-          cursorColor: AppColors.kPrimary,
-          maxLines: maxLines??1,
-          minLines: minLines??1,
+          cursorColor: theme.colorScheme.primary,
+          maxLines: maxLines ?? 1,
+          minLines: minLines ?? 1,
           style: TextStyle(
             fontFamily: AppStrings.inter,
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: AppColors.kContentPrimary,
+            color: theme.textTheme.bodyLarge?.color,
           ),
           decoration: InputDecoration(
             hintText: hintText,
@@ -55,22 +56,23 @@ class AppTextField extends StatelessWidget {
               fontFamily: AppStrings.inter,
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: AppColors.kInfoPrimary,
+              color: theme.inputDecorationTheme.hintStyle?.color,
             ),
-            contentPadding: const EdgeInsets.symmetric(
-            vertical: 12,
-            horizontal: 12,
-            ),
+            contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: AppColors.kInputBorder),
+              borderSide: BorderSide(
+                color: theme.inputDecorationTheme.enabledBorder!.borderSide.color,
+              ),
               borderRadius: BorderRadius.circular(borderRadius ?? 7),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: AppColors.kPrimary),
+              borderSide: BorderSide(
+                color: theme.inputDecorationTheme.focusedBorder!.borderSide.color,
+              ),
               borderRadius: BorderRadius.circular(borderRadius ?? 7),
             ),
-            fillColor: AppColors.kInputBackground,
-            filled: true,
+            fillColor: theme.inputDecorationTheme.fillColor,
+            filled: theme.inputDecorationTheme.filled,
           ),
         ),
       ],

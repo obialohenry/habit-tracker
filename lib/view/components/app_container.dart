@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/src/components.dart';
-import 'package:habit_tracker/src/config.dart';
 
 class AppContainer extends StatelessWidget {
   ///Creates
@@ -11,20 +10,23 @@ class AppContainer extends StatelessWidget {
     this.onTap,
     this.icon,
     this.height,
+    this.color,
   });
   final bool showIcon;
   final String text;
   final VoidCallback? onTap;
   final Widget? icon;
   final double? height;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return GestureDetector(
       onTap: onTap,
       child: Container(
         height: height ?? 50,
         decoration: BoxDecoration(
-          color: AppColors.kPrimary,
+          color: color ?? theme.colorScheme.primary,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
@@ -35,7 +37,12 @@ class AppContainer extends StatelessWidget {
                 ? Row(
                     children: [
                       SizedBox(width: 8),
-                      icon ?? Icon(Icons.arrow_forward, size: 16, color: AppColors.kContentPrimary),
+                      icon ??
+                          Icon(
+                            Icons.arrow_forward,
+                            size: 16,
+                            color: theme.textTheme.bodyLarge?.color,
+                          ),
                     ],
                   )
                 : SizedBox.shrink(),

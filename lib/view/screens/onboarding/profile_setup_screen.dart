@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/src/components.dart';
 import 'package:habit_tracker/src/config.dart';
@@ -23,15 +22,16 @@ class _ProfileSetUpScreenState extends State<ProfileSetUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: AppColors.kBackground,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(Icons.arrow_back, color: AppColors.kContentPrimary),
+              Icon(Icons.arrow_back, color: theme.textTheme.bodyLarge?.color),
               SizedBox(height: 20),
               AppText(text: AppStrings.welcome, fontSize: 24, fontWeight: FontWeight.w600),
               SizedBox(height: 5),
@@ -39,7 +39,7 @@ class _ProfileSetUpScreenState extends State<ProfileSetUpScreen> {
                 text: AppStrings.letsCustomizeYourWorkspace,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
-                color: AppColors.kContentSecondary,
+                color: theme.textTheme.bodyMedium?.color,
               ),
               SizedBox(height: 15),
               AppText(text: AppStrings.chooseAnAvatar, fontSize: 14, fontWeight: FontWeight.w700),
@@ -59,7 +59,7 @@ class _ProfileSetUpScreenState extends State<ProfileSetUpScreen> {
                         width: 30,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: AppColors.kPrimary,
+                          color: theme.colorScheme.primary,
                         ),
                       ),
                     ),
@@ -85,7 +85,7 @@ class _ProfileSetUpScreenState extends State<ProfileSetUpScreen> {
                             text: "Terminal",
                             fontSize: 10,
                             fontWeight: FontWeight.w600,
-                            color: AppColors.kContentDisabled,
+                            color: theme.textTheme.bodySmall?.color,
                           ),
                         ],
                       ),
@@ -150,13 +150,16 @@ class ProfileView extends StatelessWidget {
   final String? image;
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Container(
       height: size,
       width: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: AppColors.kTagContent,
-        border: isSelected ? Border.all(width: borderWidth, color: AppColors.kPrimary) : null,
+        border: isSelected
+            ? Border.all(width: borderWidth, color: theme.colorScheme.primary)
+            : null,
         image: image == null
             ? null
             : DecorationImage(image: FileImage(File(image!)), fit: BoxFit.cover),
